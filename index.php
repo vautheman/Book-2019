@@ -8,13 +8,6 @@ include 'assets/include/connectBDD.php';
 <php>
 
 <html>
-<div class="loader">
-	<script type="text/javascript" src="assets/js/jquery-latest.js"></script>
-	<script type="text/javascript">
-	$(window).load(function() {
-		$(".loader").fadeOut("1000");
-	})
-	</script>
 </div>
 	<head>
 		<title>AUTHEMAN Victor</title>
@@ -22,22 +15,15 @@ include 'assets/include/connectBDD.php';
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="icon" href="images/favicon.ico" />
 		<!-- CSS -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/particles.css" />
 		<link rel="stylesheet" href="assets/css/style.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<!--<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>-->
     <!-- SCRIPT -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+		<script src="assets/js/jquery-3.3.1.min"></script>
 	</head>
 	<body class="is-preload" onselectstart="return false" oncontextmenu="return false" ondragstart="return false">
-		<script type="text/javascript">
-document.onkeypress=function(e){e=e||window.event;
-    var key=e.which?e.which:event.keyCode;
-    if (key==122) alert('document.write('<iframe width="650" height="350" src="https://www.freeriderhd.com/game/1016-layers?embedded=true" frameborder="0" allowfullscreen style="border: 1px solid #000;" scrolling="no"></iframe>')');
-    else alert('Frappe de la touche de code '+key)}
-</script>
 		<!-- Wrapper -->
 
 			<div id="wrapper">
@@ -91,8 +77,36 @@ document.onkeypress=function(e){e=e||window.event;
 							</div>
 						</div>
 					</section>
-					<!-- Présentation -->
-					<iframe id="about" src="assets/include/html5up-identity/index.html"	width="100%"></iframe>
+
+					<section class="container-fluid p-0">
+						<div class="row" style="height: 75vh; margin:0;">
+							<style media="screen">
+								#aboutProfile::after{
+									background-color: white;
+								}
+							</style>
+							<div class="col-lg bg-light" id="aboutProfile" style="background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('images/profileAbout.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center; background-color: #15233d;clip-path: polygon(92% 0, 92% 40%, 100% 50%, 92% 60%, 92% 100%, 0 100%, 0 0); box-shadow: 10px, 5px, 5px, black;">
+
+							</div>
+							<div class="col-lg position-relative">
+								<div class="inner position-absolute text-center w-100" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+									<header>
+										<h1 class="display-5"><span class="border border-1 p-4">AUTHEMAN Victor</span></h1>
+									</header>
+									<h5 style="font-size: 18pt;">Developpeur Web & Web Designer</h5>
+									<p style="font-size: 15pt;">Etudiant du BTS Dominique Villars, 05000 GAP FRANCE</p>
+									<div class="icon d-flex flex-row justify-content-center">
+										<a class="m-2 border-0" href="https://github.com/vautheman"><i class="fab fa-github fa-2x"></i></a>
+										<a class="m-2 border-0" href="https://www.facebook.com/authemanvicko"><i class="fab fa-facebook fa-2x"></i></a>
+										<a class="m-2 border-0" href="https://www.linkedin.com/in/victor-autheman-developer"><i class="fab fa-linkedin-in fa-2x"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="p-4 bg-dark" style="height: 100px; background: url('https://backgroundcheckall.com/wp-content/uploads/2017/12/dark-floral-background-9942.jpg');">
+
+						</div>
+					</section>
 
 				<!-- Main -->
 					<div id="main">
@@ -155,7 +169,7 @@ document.onkeypress=function(e){e=e||window.event;
 						</section>
 
 						<!-- Two -->
-						<section id="two" class="two">
+						<section id="two" class="two mb-4">
 							<div class="inner">
 								<header class="major">
 									<h2>Ressources</h2>
@@ -167,60 +181,113 @@ document.onkeypress=function(e){e=e||window.event;
 							</div>
 						</section>
 
-						<section id="three" class="blog">
-							<div class="inner">
-								<header class="major">
-									<h2>Instant Diffusion - Blog</h2>
-								</header>
-								<p><strong>NOUVEAU : </strong>Instant Diffusion est un blog où des articles sont souvent postés apportant sur certains sujets qui nous tienne à coeur et qui est sensible de vous intérésez. Si vous souhaitez participer à ce projet, contactez moi par mail afin qu'un compte abonné vous soit attribué dans les plus bref delai. Vous devrez néanmoins préciser vos centre d'intéret et pourquoi vous voulez participer dans le mail afin que je sache que vous n'êtes pas nuisible à la constitution de ce projet.</p>
-								<ul class="actions">
-									<li><a href="blog/" class="button next">Visiter</a></li>
-								</ul>
+						<section id="three" class="three">
+							<style media="screen">
+								.carousel-item{
+									height: 400px;
+								}
+							</style>
+							<!--Carousel Wrapper-->
+							<div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+							  <!--Indicators-->
+							  <ol class="carousel-indicators">
+							    <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+							    <li data-target="#carousel-example-2" data-slide-to="1"></li>
+							    <li data-target="#carousel-example-2" data-slide-to="2"></li>
+							  </ol>
+							  <!--/.Indicators-->
+							  <!--Slides-->
+							  <div class="carousel-inner" role="listbox">
+							    <div class="carousel-item active">
+							      <div class="view">
+							        <img class="d-block w-100" src="images/slider1.jpg"
+							          alt="First slide">
+							        <div class="mask rgba-black-light"></div>
+							      </div>
+							      <div class="carousel-caption">
+							        <h3 class="h3-responsive">Light mask</h3>
+							        <p>First text</p>
+							      </div>
+							    </div>
+							    <div class="carousel-item">
+							      <!--Mask color-->
+							      <div class="view">
+							        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg"
+							          alt="Second slide">
+							        <div class="mask rgba-black-strong"></div>
+							      </div>
+							      <div class="carousel-caption">
+							        <h3 class="h3-responsive">Strong mask</h3>
+							        <p>Secondary text</p>
+							      </div>
+							    </div>
+							    <div class="carousel-item">
+							      <!--Mask color-->
+							      <div class="view">
+							        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg"
+							          alt="Third slide">
+							        <div class="mask rgba-black-slight"></div>
+							      </div>
+							      <div class="carousel-caption">
+							        <h3 class="h3-responsive">Slight mask</h3>
+							        <p>Third text</p>
+							      </div>
+							    </div>
+							  </div>
+							  <!--/.Slides-->
+							  <!--Controls-->
+							  <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+							    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							    <span class="sr-only">Previous</span>
+							  </a>
+							  <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+							    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+							    <span class="sr-only">Next</span>
+							  </a>
+							  <!--/.Controls-->
 							</div>
+							<!--/.Carousel Wrapper-->
 						</section>
 
-						<section id="four" class="voyage">
-							<div class="img-voyage"></div>
+						<section id="four" class="four mb-4" style="background-color: #242943; border-bottom: solid 1px rgba(212, 212, 255, 0.1);">
 							<div class="inner">
-							<!--<div class="inner">
 								<header class="major">
-									<h2>Envie de Partir !</h2>
+									<h2>Derniers Tutoriel</h2>
 								</header>
-								<p>Suivez-nous tout au long de nos aventures autour de notre magnifique géante bleu !</p>
-							</div>
-							<iframe id="voyage" src="https://www.google.com/maps/d/embed?mid=1BZDj8F0fplD1eAlpLEL_PtNP8bPJgvA-" width="100%" height="650"></iframe>-->
-								<header class="major">
-									<h2>Envie de partir</h2>
-								</header>
-								<p>Suivez nos aventures autour du globe en vous insvrivant puis en vous rendant sur la page suivante</p>
-								<ul class="actions">
-									<li><a href="travel.php" class="button next">En savoir plus</a></li>
-								</ul>
-							</div>
-						</section>
-
-						<section>
-							<div class="slider">
-						    <div class="slider1">
-									<h1>Projet PPE : NewWorld</h1>
-									<p>PPE (projet personnel encadré) : Création d'un site de drive où producteur et client peuvent s'inscrire, vendre et acheter des produits selon la localisation des différents points relais.</p>
+								<p>Voici mes derniers tutoriels disponible dans mon portfolio</p>
+								<div class="row">
+								<?php
+								$req = $bdd->prepare("SELECT * FROM card LIMIT 6");
+								$req->execute();
+								while($curCard = $req->fetch())
+								{
+									?>
+									<div class="column-4 column-12-medium">
+										<div class="carte" style="background-color: #15233d;">
+										 <div class="container text-left">
+											 <h4><b><?php echo $curCard['cardNom']; ?></b></h4>
+											 <p><?php echo substr($curCard['cardDesc'], 0, 70).'...'; ?></p>
+											 <?php if(isset($_SESSION['user']) AND $_SESSION['user'] == "admin"){ ?>
+												 <ul class="actions">
+													 <li><a class="button primary" href="cardModif.php?cardId=<?php echo $curCard['cardId']; ?>">Modifier</a></li>
+													 <li><a class="button primary" href="cardSuppr.php?cardId=<?php echo $curCard['cardId']; ?>">Supprimer</a></li>
+												 </ul>
+												 <?php } ?>
+											 <ul class="actions">
+												<li><a target="_blank" href="<?php echo $curCard['cardURL']; ?>" class="button">Ouvrir</a></li>
+											</ul>
+										 </div>
+										</div>
+									</div>
+									<?php
+									}
+									?>
 								</div>
-						    <div>I am another slide.</div>
-						  </div>
-						</section>
-
-						<!-- Three -->
-						<!--<section class="blog" id="three">
-							<div class="inner">
-								<header class="major">
-									<h2>Instant Diffusion - Blog</h2>
-								</header>
-								<p><strong>NOUVEAU : </strong>Instant Diffusion est un blog où des articles sont souvent postés apportant sur certains sujets qui nous tienne à coeur et qui est sensible de vous intérésez. Si vous souhaitez participer à ce projet, contactez moi par mail afin qu'un compte abonné vous soit attribué dans les plus bref delai. Vous devrez néanmoins préciser vos centre d'intéret et pourquoi vous voulez participer dans le mail afin que je sache que vous n'êtes pas nuisible à la constitution de ce projet.</p>
 								<ul class="actions">
-									<li><a href="blog/" class="button next">Visiter</a></li>
+									<li><a href="portfolio.php" class="button next">En savoir Plus</a></li>
 								</ul>
 							</div>
-						</section>-->
+						</section>
 
 					</div>
 
@@ -233,6 +300,7 @@ document.onkeypress=function(e){e=e||window.event;
 			</div>
 
 		<!-- Scripts -->
+			<script src="https://kit.fontawesome.com/6d49d39f46.js" crossorigin="anonymous"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
@@ -240,10 +308,6 @@ document.onkeypress=function(e){e=e||window.event;
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-			<script src="assets/js/parallax.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/baffle@0.3.6/dist/baffle.min.js"></script>
-			<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 			<script type="text/javascript">
 				const text = baffle(".data");
 				text.set({
@@ -252,13 +316,6 @@ document.onkeypress=function(e){e=e||window.event;
 				})
 				text.start();
 				text.reveal(2000);
-			</script>
-
-			<!-- SLIDER SCRIPT -->
-			<script>
-				$(document).ready(function(){
-					$('.slider').bxSlider();
-				});
 			</script>
 
 

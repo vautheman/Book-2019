@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <?php
 // On se connecte à la base donnée
-include 'include/connectBDD.php';
+include 'assets/include/connectBDD.php';
 // On récupère l'identifiant choisi
 if(isset($_GET['cardId']) AND !empty($_GET['cardId']) AND $_GET['cardId'] > 0)
 {
@@ -30,6 +30,7 @@ if(isset($_GET['cardId']) AND !empty($_GET['cardId']) AND $_GET['cardId'] > 0)
 		<!-- SCRIPT -->
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
 	</head>
 	<body class="is-preload" onselectstart="return false" oncontextmenu="return false" ondragstart="return false">
 		<!--<div class="loader">
@@ -55,7 +56,7 @@ if(isset($_GET['cardId']) AND !empty($_GET['cardId']) AND $_GET['cardId'] > 0)
 					</header>
 
 				<!-- Menu -->
-					<?php include 'include/nav.php'; ?>
+					<?php include 'assets/include/nav.php'; ?>
 
 				<!-- Main -->
 					<div id="main" class="alt">
@@ -72,8 +73,12 @@ if(isset($_GET['cardId']) AND !empty($_GET['cardId']) AND $_GET['cardId'] > 0)
                   <form action="#" method="post">
                     <input type="text" name="nom" placeholder="Titre de la carte" value="<?php if(isset($cur['cardNom'])){echo $cur['cardNom'];} ?>">
                     <input type="text" name="description" placeholder="Description de la carte" value="<?php if(isset($cur['cardDesc'])){echo $cur['cardDesc'];} ?>">
-                    <input type="url" name="lien" placeholder="Lien de la carte" value="<?php if(isset($cur['cardURL'])){echo $cur['cardURL'];} ?>"><br>
-                    <input type="submit" value="Mettre à jour" class="primary" />
+                    <input type="url" name="lien" placeholder="Lien de la carte" value="<?php if(isset($cur['cardURL'])){echo $cur['cardURL'];} ?>">
+                    <textarea name="contenu"><?php if(isset($cur['cardContenu'])){echo $cur['cardContenu'];} ?></textarea><br>
+                    <script>
+                      CKEDITOR.replace( 'contenu' );
+                    </script>
+                    <input name="utiliser" type="submit" value="Mettre à jour" class="primary" />
                     <?php
                     // On verifi si l'utilisateur à bien cliqué sur le bouton
                     if(isset($_POST['nom']))
@@ -81,7 +86,6 @@ if(isset($_GET['cardId']) AND !empty($_GET['cardId']) AND $_GET['cardId'] > 0)
                       $nom = htmlspecialchars($_POST['nom']);
                       $update = $bdd->prepare("UPDATE card SET cardNom = ? WHERE cardId = ?");
                       $update->execute(array($nom, $cardId));
-                      header("Location: portfolioDisplay.php?portId=".$cur['portId']);
                     }
 
                     if(isset($_POST['description']))
@@ -89,7 +93,6 @@ if(isset($_GET['cardId']) AND !empty($_GET['cardId']) AND $_GET['cardId'] > 0)
                       $description = htmlspecialchars($_POST['description']);
                       $update = $bdd->prepare("UPDATE card SET cardDesc = ? WHERE cardId = ?");
                       $update->execute(array($description, $cardId));
-                      header("Location: portfolioDisplay.php?portId=".$cur['portId']);
                     }
 
                     if(isset($_POST['lien']))
@@ -97,7 +100,13 @@ if(isset($_GET['cardId']) AND !empty($_GET['cardId']) AND $_GET['cardId'] > 0)
                       $lien = htmlspecialchars($_POST['lien']);
                       $update = $bdd->prepare("UPDATE card SET cardURL = ? WHERE cardId = ?");
                       $update->execute(array($lien, $cardId));
-                      header("Location: portfolioDisplay.php?portId=".$cur['portId']);
+                    }
+
+                    if(isset($_POST['contenu']))
+                    {
+                      $contenu = $_POST['contenu'];
+                      $update = $bdd->prepare("UPDATE card SET cardContenu = ? WHERE cardId = ?");
+                      $update->execute(array($contenu, $cardId));
                     }
                     ?>
                   </form>
@@ -108,16 +117,16 @@ if(isset($_GET['cardId']) AND !empty($_GET['cardId']) AND $_GET['cardId'] > 0)
             ?>
 
 				<!-- Contact -->
-					<?php //include 'include/contact.php'; ?>
+					<?php //include 'assets/include/contact.php'; ?>
 
 				<!-- Footer -->
-					<?php //include 'include/footer.html'; ?>
+					<?php //include 'assets/include/footer.html'; ?>
 
 			</div>
       <?php
       // fermeture du if
-    } else header("Location: card.php"); //echo "Il n'existe pas de $cardId";
-    } else header("Location: card.php");
+    } else header("Location: portfolioDisplay.php?portId=".$cur['portId']); //echo "Il n'existe pas de $cardId";
+  } else header("Location: portfolioDisplay.php?portId=".$cur['portId']);
       ?>
 
 		<!-- Scripts -->
@@ -131,6 +140,12 @@ if(isset($_GET['cardId']) AND !empty($_GET['cardId']) AND $_GET['cardId'] > 0)
 
 	</body>
 </html>
+<?php
+if(isset($_POST['utiliser']))
+{
+  header("Location: portfolioDisplay.php?portId=".$cur['portId']);
+}
+?>
 <?php/*
 } else{
   header('Location: connexion.php?page=card');

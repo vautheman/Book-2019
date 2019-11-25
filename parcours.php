@@ -28,15 +28,30 @@
 						<!-- One -->
 							<section id="one">
 								<div class="inner">
-									<header class="major">
-										<h1>Mon Parcours</h1>
-									</header>
-									<ul>
-                    <li>2013 - 2014 : École des Beaux-arts</li><br>
-                    <li>2016 - 2017 : Lycée Pierre Mendès France<br>- Obtention du BEP (Système Électronique et Numérique)</li><br>
-                    <li>2017 - 2018 : Lycée Pierre Mendès France<br>- Obtention du baccalauréat (Système Électronique et Numérique)</li><br>
-                    <li>2018 - 2020 : BTS Dominique Villard<br>- SIO (Système Informatique aux Organisations)</li><br>
-                  </ul>
+									<section class="intro">
+									  <div class="container">
+									    <h1>Mon parcours scolaire et professionnel</h1>
+									  </div>
+									</section>
+
+									<section class="timeline">
+									  <ul>
+											<?php
+											$req = $bdd->prepare("SELECT year(parcoursDate), parcoursTitre, parcoursLib FROM parcoursItem ORDER BY parcoursDate desc");
+											$req->execute();
+											while($cur = $req->fetch())
+											{
+											?>
+									    <li>
+									      <div>
+									        <time><?php echo $cur[0]; ?> - <?php echo $cur[1]; ?></time> <?php echo $cur[2]; ?>
+									      </div>
+									    </li>
+											<?php
+											}
+											?>
+									  </ul>
+									</section>
 								</div>
 							</section>
 
@@ -58,6 +73,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/timeline_slider.js" charset="utf-8"></script>
 
 	</body>
 </html>

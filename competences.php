@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <?php
-include 'include/connectBDD.php';
+include 'assets/include/connectBDD.php';
 ?>
 <!--
 	Site internet Créé par AUTHEMAN Victor
@@ -32,7 +32,7 @@ include 'include/connectBDD.php';
 					</header>
 
 				<!-- Menu -->
-					<?php include 'include/nav.php'; ?>
+					<?php include 'assets/include/nav.php'; ?>
 
 				<!-- Main -->
 					<div id="main" class="alt">
@@ -92,10 +92,10 @@ include 'include/connectBDD.php';
 					</div>
 
 				<!-- Contact -->
-					<?php include 'include/contact.php'; ?>
+					<?php include 'assets/include/contact.php'; ?>
 
 				<!-- Footer -->
-        <?php include 'include/footer.html'; ?>
+        <?php include 'assets/include/footer.html'; ?>
 			</div>
 
 		<!-- Scripts -->

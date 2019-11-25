@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <?php
 // Connexion à la base de donnée
-include 'include/connectBDD.php';
+include 'assets/include/connectBDD.php';
 
 if(isset($_GET['id']) AND $_GET['id'] > 0)
 {
@@ -39,7 +39,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 					</header>
 
 				<!-- Menu -->
-					<?php include 'include/nav.php'; ?>
+					<?php include 'assets/include/nav.php'; ?>
 
 				<!-- Main -->
         <div id="banner2" class="profile container-fluid"></div>
@@ -95,7 +95,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 					</div>
 
 				<!-- Footer -->
-					<?php include 'include/footer.html'; ?>
+					<?php include 'assets/include/footer.html'; ?>
 
 			</div>
 

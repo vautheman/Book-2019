@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'administration.ui'
 **
-** Created by: Qt User Interface Compiler version 5.11.3
+** Created by: Qt User Interface Compiler version 5.7.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,7 +10,10 @@
 #define UI_ADMINISTRATION_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
@@ -19,7 +22,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_administration
+class Ui_Administration
 {
 public:
     QMenuBar *menuBar;
@@ -27,38 +30,38 @@ public:
     QWidget *centralWidget;
     QStatusBar *statusBar;
 
-    void setupUi(QMainWindow *administration)
+    void setupUi(QMainWindow *Administration)
     {
-        if (administration->objectName().isEmpty())
-            administration->setObjectName(QStringLiteral("administration"));
-        administration->resize(400, 300);
-        menuBar = new QMenuBar(administration);
+        if (Administration->objectName().isEmpty())
+            Administration->setObjectName(QStringLiteral("Administration"));
+        Administration->resize(400, 300);
+        menuBar = new QMenuBar(Administration);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        administration->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(administration);
+        Administration->setMenuBar(menuBar);
+        mainToolBar = new QToolBar(Administration);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        administration->addToolBar(mainToolBar);
-        centralWidget = new QWidget(administration);
+        Administration->addToolBar(mainToolBar);
+        centralWidget = new QWidget(Administration);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        administration->setCentralWidget(centralWidget);
-        statusBar = new QStatusBar(administration);
+        Administration->setCentralWidget(centralWidget);
+        statusBar = new QStatusBar(Administration);
         statusBar->setObjectName(QStringLiteral("statusBar"));
-        administration->setStatusBar(statusBar);
+        Administration->setStatusBar(statusBar);
 
-        retranslateUi(administration);
+        retranslateUi(Administration);
 
-        QMetaObject::connectSlotsByName(administration);
+        QMetaObject::connectSlotsByName(Administration);
     } // setupUi
 
-    void retranslateUi(QMainWindow *administration)
+    void retranslateUi(QMainWindow *Administration)
     {
-        administration->setWindowTitle(QApplication::translate("administration", "administration", nullptr));
+        Administration->setWindowTitle(QApplication::translate("Administration", "Administration", Q_NULLPTR));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class administration: public Ui_administration {};
+    class Administration: public Ui_Administration {};
 } // namespace Ui
 
 QT_END_NAMESPACE

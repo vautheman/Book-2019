@@ -4,7 +4,7 @@
 
 -->
 <?php
-include 'include/connectBDD.php';
+include 'assets/include/connectBDD.php';
 
 if(isset($_SESSION['id']))
 {
@@ -94,7 +94,7 @@ if(isset($_SESSION['id']))
 					</header>
 
 				<!-- Menu -->
-					<?php include 'include/nav.php'; ?>
+					<?php include 'assets/include/nav.php'; ?>
 
 				<!-- Main -->
 					<div id="main" class="alt">
@@ -144,7 +144,7 @@ if(isset($_SESSION['id']))
 					</div>
 
 				<!-- Footer -->
-					<?php include 'include/footer.html'; ?>
+					<?php include 'assets/include/footer.html'; ?>
 
 			</div>
 

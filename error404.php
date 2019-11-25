@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<?php include 'include/connectBDD.php'; ?>
+<?php include 'assets/include/connectBDD.php'; ?>
 <!--
 	Site internet Créé par AUTHEMAN Victor
 -->
@@ -31,7 +31,7 @@
 					</header>
 
 				<!-- Menu -->
-					<?php include 'include/nav.php'; ?>
+					<?php include 'assets/include/nav.php'; ?>
 
 				<!-- Main -->
 					<div id="main" class="alt">
@@ -53,7 +53,7 @@
 					</div>
 
 				<!-- Footer -->
-					<?php include 'include/footer.html'; ?>
+					<?php include 'assets/include/footer.html'; ?>
 
 			</div>
 

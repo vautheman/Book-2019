@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <?php
-include 'include/connectBDD.php';
+include 'assets/include/connectBDD.php';
 
 //if(isset($_GET['id']) AND $_GET['id'] > 0)
 if(isset($_SESSION['id']))
@@ -40,7 +40,7 @@ if(isset($_SESSION['id']))
 					</header>
 
 				<!-- Menu -->
-					<?php include 'include/nav.php'; ?>
+					<?php include 'assets/include/nav.php'; ?>
 
 				<!-- Banner -->
 				<!-- Note: The "styleN" class below should match that of the header element. -->
@@ -88,19 +88,80 @@ if(isset($_SESSION['id']))
 								</div>
 							</section>
 
-							<div class="card card-image" style="filter: grayscale(50%); background-size: cover; background-image: url(https://images7.alphacoders.com/861/861304.jpg);">
-							  <div class="text-white text-center py-5 px-4 my-5">
-							    <div>
-							      <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>New World : Projet Drive, PPE 2019 </strong></h2>
-							      <p class="mx-5 mb-5">PPE (projet personnel encadré) : Création d'un site de drive où producteur et client peuvent s'inscrire, vendre et acheter des produits selon la localisation des différents points relais.
-							      </p>
-							      <a href="https://docs.google.com/document/d/1QfUcgxkbaF7lZk-YFCJD6nZFb9mIXfm5kn9BfqPbH8g" class="btn btn-outline-white btn-md text-dark"><i class="fas fa-clone left"></i> Voir le projet</a>
-							    </div>
-							  </div>
-							</div>
+							<!--Carousel Wrapper-->
+							<section id="two" class="mt-4">
+								<div class="inner">
+									<header class="major">
+										<h2>Mes Projets</h2>
+									</header>
+									<div id="carousel-example-1z" class="carousel slide carousel-fade mb-4" data-ride="carousel">
+									  <!--Indicators-->
+									  <ol class="carousel-indicators">
+									    <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+									    <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+									    <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+									  </ol>
+									  <!--/.Indicators-->
+									  <!--Slides-->
+									  <div class="carousel-inner" role="listbox">
+									    <!--First slide-->
+									    <div class="carousel-item active">
+									      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"
+									        alt="First slide">
+									    </div>
+									    <!--/First slide-->
+									    <!--Second slide-->
+									    <div class="carousel-item">
+									      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"
+									        alt="Second slide">
+									    </div>
+									    <!--/Second slide-->
+									    <!--Third slide-->
+									    <div class="carousel-item">
+									      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"
+									        alt="Third slide">
+									    </div>
+									    <!--/Third slide-->
+									  </div>
+									  <!--/.Slides-->
+									  <!--Controls-->
+									  <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+									    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									    <span class="sr-only">Previous</span>
+									  </a>
+									  <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+									    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+									    <span class="sr-only">Next</span>
+									  </a>
+									  <!--/.Controls-->
+									</div>
+
+									<!-- Card -->
+									<div class="d-flex flex-lg-row flex-sm-column mb-3 justify-content-between">
+										<style media="screen">
+											.flex-lg-row .ressourceCard{
+												max-width: 400px;
+												width: auto;
+											}
+
+											.ressourceCard img{
+												border-radius: 5px;
+											}
+										</style>
+										<div class="ressourceCard">
+											<img width="100%" src="https://jesuisadmin.fr/content/images/2018/11/D-ployez-vos-machines-virtuelles-KVM-sur-Proxmox-avec-Cloud-Init--1-.png" alt="">
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+										</div>
+										<div class="ressourceCard">
+											<img width="100%" src="https://jesuisadmin.fr/content/images/2018/11/D-ployez-vos-machines-virtuelles-KVM-sur-Proxmox-avec-Cloud-Init--1-.png" alt="">
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+										</div>
+									</div>
+								</div>
+						</section>
 
 						<!-- Two -->
-            <section id="two">
+            <section id="three">
                 <div class="inner">
 									<header class="major">
 										<h1>LINUX</h1>
@@ -110,7 +171,7 @@ if(isset($_SESSION['id']))
                   </ul>
 								</div>
 							</section>
-              <section id="three">
+              <section id="four">
                   <div class="inner">
   									<header class="major">
   										<h1>C++</h1>
@@ -143,7 +204,7 @@ if(isset($_SESSION['id']))
                     </ul>
   								</div>
   							</section>
-                <section id="four">
+                <section id="five">
                   <div class="inner">
   									<header class="major">
   										<h1>SQL</h1>
@@ -155,7 +216,7 @@ if(isset($_SESSION['id']))
                     </ul>
                   </div>
                 </section>
-                <section id="five">
+                <section id="six">
                   <div class="inner">
   									<header class="major">
   										<h1>HTML5 / CSS3</h1>
@@ -172,10 +233,10 @@ if(isset($_SESSION['id']))
 					</div>
 
 				<!-- Contact -->
-					<?php include 'include/contact.php'; ?>
+					<?php include 'assets/include/contact.php'; ?>
 
 				<!-- Footer -->
-					<?php include 'include/footer.html'; ?>
+					<?php include 'assets/include/footer.html'; ?>
 
 			</div>
 

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <?php
-include 'include/connectBDD.php';
+include 'assets/include/connectBDD.php';
 ?>
 <!--
 	Site internet Créé par AUTHEMAN Victor
@@ -8,7 +8,8 @@ include 'include/connectBDD.php';
 <html>
 	<head>
 		<title>Mon expérience</title>
-		<meta charset="utf-8" />
+		<meta charset="UTF-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="icon" href="images/favicon.ico" />
 		<link rel="stylesheet" href="assets/css/style.css" />
@@ -28,7 +29,7 @@ include 'include/connectBDD.php';
 					</header>
 
 				<!-- Menu -->
-					<?php include 'include/nav.php'; ?>
+					<?php include 'assets/include/nav.php'; ?>
 
 				<!-- Main -->
 					<div id="main" class="alt">
@@ -36,27 +37,40 @@ include 'include/connectBDD.php';
 						<!-- One -->
 							<section id="one">
 								<div class="inner">
-									<header class="major">
-										<h1>Mon Expérience</h1>
-									</header>
-									<ul>
-                    <li>2013 - 2014 : Scoutisme Éclaireur du midi<br>- 04200 VAUMEILH</li><br>
-                    <li>2014 - 2015 : Stage architecture PELLISSIER<br>- 03 Allée des Érables, 04200 SISTERON<br>- 1 Semaine - découverte</li><br>
-                    <li>2015 - 2016 : Stage alarme Service DESSAUD<br>- Les Grandes Blaches, 04200 MISON<br>- 3 Semaines</li><br>
-                    <li>2015 - 2016 : Stage Avenir Vision<br>- 3 rue des grands jardins, 04200 SISTERON<br>- 3 Semaines</li><br>
-                    <li>2016 - 2017 : Stage B-Contact Développement<br>- 04 Allée des Érables, 04200 SISTERON<br>- 4 Semaines</li><br>
-                    <li>2016 - 2017 : Stage Mairie de Sisteron<br>- Place de la République, 04200 SISTERON<br>- 4 Semaines - Service Informatique</li><br>
-                  </ul>
+									<section class="intro">
+									  <div class="container">
+									    <h1>Mon expérience professionnel</h1>
+									  </div>
+									</section>
+
+									<section class="timeline">
+									  <ul>
+											<?php
+											$req = $bdd->prepare("SELECT year(expDate), expTitre, expLib FROM experienceItem ORDER BY expDate desc");
+											$req->execute();
+											while($cur = $req->fetch())
+											{
+											?>
+									    <li>
+									      <div>
+									        <time><?php echo $cur[0]; ?> - <?php echo $cur[1]; ?></time> <?php echo $cur[2]; ?>
+									      </div>
+									    </li>
+											<?php
+											}
+											?>
+									  </ul>
+									</section>
 								</div>
 							</section>
 
 					</div>
 
 				<!-- Contact -->
-					<?php include 'include/contact.php'; ?>
+					<?php include 'assets/include/contact.php'; ?>
 
 				<!-- Footer -->
-					<?php include 'include/footer.html'; ?>
+					<?php include 'assets/include/footer.html'; ?>
 
 			</div>
 
@@ -68,6 +82,7 @@ include 'include/connectBDD.php';
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/timeline_slider.js" charset="utf-8"></script>
 
 	</body>
 </html>

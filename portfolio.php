@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <?php
-include 'include/connectBDD.php';
+include 'assets/include/connectBDD.php';
 
 //if(isset($_GET['id']) AND $_GET['id'] > 0)
 //if(isset($_SESSION['id']))
@@ -57,7 +57,7 @@ include 'include/connectBDD.php';
 					</header>
 
 				<!-- Menu -->
-					<?php include 'include/nav.php'; ?>
+					<?php include 'assets/include/nav.php'; ?>
 
 				<!-- Banner -->
 				<!-- Note: The "styleN" class below should match that of the header element. -->
@@ -77,17 +77,17 @@ include 'include/connectBDD.php';
 
 				<!-- Main -->
 					<div id="main">
-						<section style="position: fixed; display: flex; flex-direction: column; ; z-index: 5; bottom: 0; right:0;" id="menu-secondary">
-							<?php
+						<!--<section style="position: fixed; display: flex; flex-direction: column; ; z-index: 5; bottom: 0; right:0;" id="menu-secondary">
+							<?php/*
 								$req = $bdd->prepare("SELECT * from portfolio");
 								$req->execute();
 								// On ouvre la boucle pour l'affichage du menu secondaire
 								while($cur = $req->fetch())
 								{
-									echo "<a class='scrolly icon-anchor' href='#".$cur['portAncre']."'><img src='images/".$cur['portImage']."' width='50px' height='50px' alt='' data-position='center center' /></a>";
-								}
+									echo "<a class='scrolly icon-anchor' href='#".$cur['portAncre']."'><img src='images/portfolio/icon/".$cur['portImage']."' width='50px' height='50px' alt='' data-position='center center' /></a>";
+								}*/
 							?>
-						</section>
+						</section>-->
 						<!-- One -->
 							<section id="one">
 								<!-- SCRIPT disparition .alert -->
@@ -101,6 +101,116 @@ include 'include/connectBDD.php';
 										<h2>Conditions d'utilisation</h2>
 									</header>
 									<p>Je mets mon portfolio à disposition de tous gratuitement sous modalité d'inscription. Celui-ci a pour but d'aider la majorité d'entre vous à réaliser des projets que j'ai moi-même mis en place. Mes cours et différents fichiers de configuration et de programmation en font partie.<br />Faites en bon usage !</p>
+								</div>
+							</section>
+							<section>
+								<div class="inner">
+									<header class="major">
+										<?php if(isset($_GET['search']) AND !empty($_GET['search'])){
+											$search = htmlspecialchars($_GET['search']);
+										?>
+											<h2 style="display: inline-block; ">Résultat pour : <?php echo $search; ?></h2>
+										<?php } else { ?>
+											<h2 style="display: inline-block; ">Derniers articles</h2>
+										<?php } ?>
+										<form class="" action="" method="get">
+											<input style="display: inline-block;" type="search" name="search" value="" placeholder="Rechercher ...">
+										</form>
+									</header>
+									<div class="row">
+									<?php
+									if(isset($_GET['search']) AND !empty($_GET['search']))
+									{
+										// Si une recherche existe alors :
+										$search = htmlspecialchars($_GET['search']);
+										$req = $bdd->prepare("SELECT * FROM card WHERE cardNom LIKE ? OR cardContenu LIKE ? OR cardDesc LIKE ? LIMIT 6");
+										$req->execute(array("%".$search."%", "%".$search."%", "%".$search."%"));
+										while($curCard = $req->fetch())
+										{
+											?>
+											<div class="column-4 column-12-medium">
+	                      <div class="carte" style="background-color: #15233d;">
+													<div class="container text-left">
+ 	                         <h4><b><?php echo $curCard['cardNom']; ?></b></h4>
+ 	                         <p><?php echo substr($curCard['cardDesc'], 0, 70).'...'; ?></p>
+													<ul class="actions">
+														<?php
+														//  Récupèration du nombre de commentaire
+														$reqCom = $bdd->prepare("SELECT * FROM commentaires WHERE comCard = ?");
+														$reqCom->execute(array($curCard['cardId']));
+														$nbCom = 0;
+														?>
+														<li><i class="fas fa-comment-alt"></i> <?php while($curCom = $reqCom->fetch()){$nbCom++;} echo $nbCom; ?></li>
+														<li><i class="fas fa-calendar-alt"></i> <?php $date=date_create($curCard['cardDate']); echo date_format($date, 'd/m/Y'); ?></li>
+													</ul>
+													<ul class="actions">
+													 <li><a target="_blank" href="article.php?id=<?php echo $curCard['cardId']; ?>" class="button">Consulter</a></li>
+													 <div>
+														 <li style="display: inline-block;"><a style="border: none !important; bottom:0;" title="Télécharger" target="_blank" href="<?php echo $curCard['cardURL']; ?>"><i class="fas fa-external-link-alt fa-lg"></i></a></li>
+														 <?php if(isset($_SESSION['user']) AND $_SESSION['user'] == "admin"){ ?>
+														 <li style="display: inline-block;"><a style="border: none !important; bottom:0;" href="cardModif.php?cardId=<?php echo $curCard['cardId']; ?>" class="text-warning"><i class="fas fa-edit fa-lg"></i></a></li>
+														 <li style="display: inline-block;"><a style="border: none !important; bottom:0;" href="cardSuppr.php?cardId=<?php echo $curCard['cardId']; ?>" class="text-danger"><i class="fas fa-trash fa-lg"></i></a></li>
+														 <?php } ?>
+													 </div>
+												 </ul>
+ 	                       </div>
+	                      </div>
+	                    </div>
+										<?php
+										}
+									} else {
+										// sinon
+										$req = $bdd->prepare("SELECT * FROM card LIMIT 6");
+										$req->execute();
+										while($curCard = $req->fetch())
+										{
+											?>
+											<div class="column-4 column-12-medium">
+	                      <div class="carte" style="background-color: #15233d;">
+													<div class="container text-left">
+ 	                         <h4><b><?php echo $curCard['cardNom']; ?></b></h4>
+ 	                         <p><?php echo substr($curCard['cardDesc'], 0, 70).'...'; ?></p>
+													<ul class="actions">
+														<?php
+														//  Récupèration du nombre de commentaire
+														$reqCom = $bdd->prepare("SELECT * FROM commentaires WHERE comCard = ?");
+														$reqCom->execute(array($curCard['cardId']));
+														$nbCom = 0;
+														?>
+														<li><i class="fas fa-comment-alt"></i> <?php while($curCom = $reqCom->fetch()){$nbCom++;} echo $nbCom; ?></li>
+														<li><i class="fas fa-calendar-alt"></i> <?php $date=date_create($curCard['cardDate']); echo date_format($date, 'd/m/Y'); ?></li>
+													</ul>
+													<ul class="actions">
+													 <li><a target="_blank" href="article.php?id=<?php echo $curCard['cardId']; ?>" class="button">Consulter</a></li>
+													 <div>
+														 <li style="display: inline-block;"><a style="border: none !important; bottom:0;" title="Télécharger" target="_blank" href="<?php echo $curCard['cardURL']; ?>"><i class="fas fa-external-link-alt fa-lg"></i></a></li>
+														 <?php if(isset($_SESSION['user']) AND $_SESSION['user'] == "admin"){ ?>
+														 <li style="display: inline-block;"><a style="border: none !important; bottom:0;" href="cardModif.php?cardId=<?php echo $curCard['cardId']; ?>" class="text-warning"><i class="fas fa-edit fa-lg"></i></a></li>
+														 <li style="display: inline-block;"><a style="border: none !important; bottom:0;" href="cardSuppr.php?cardId=<?php echo $curCard['cardId']; ?>" class="text-danger"><i class="fas fa-trash fa-lg"></i></a></li>
+														 <?php } ?>
+													 </div>
+												 </ul>
+ 	                       </div>
+	                      </div>
+	                    </div>
+											<?php
+											}
+										}
+										?>
+									</div>
+									<?php if(!(isset($_GET['search']) AND !empty($_GET['search']))){ ?>
+									<ul class="pagination">
+										<li><span class="button small disabled">Prev</span></li>
+										<li><a href="#" class="page active">1</a></li>
+										<li><a href="#" class="page">2</a></li>
+										<li><a href="#" class="page">3</a></li>
+										<li><span>…</span></li>
+										<li><a href="#" class="page">8</a></li>
+										<li><a href="#" class="page">9</a></li>
+										<li><a href="#" class="page">10</a></li>
+										<li><a href="#" class="button small">Next</a></li>
+									</ul>
+								<?php } ?>
 								</div>
 							</section>
 							<?php
@@ -166,7 +276,7 @@ include 'include/connectBDD.php';
 							?>
 								<section id="<?php echo $cur['portAncre']; ?>">
 									<a href="portfolioDisplay.php?portId=<?php echo $cur['portId']; ?>" class="image">
-										<img src="images/<?php echo $cur['portImage']; ?>" alt="" data-position="center center" />
+										<img src="images/portfolio/icon/<?php echo $cur['portImage']; ?>" alt="" data-position="center center" />
 									</a>
 									<div class="content">
 										<div class="inner">
@@ -192,96 +302,6 @@ include 'include/connectBDD.php';
 
 						</section>
 
-						<?php
-
-						if(isset($_POST['submitCommentaire']))
-						{
-							if(isset($_SESSION['user'], $_POST['commentaire'], $_POST['type']) AND !empty($_SESSION['user']) AND !empty($_POST['commentaire']) AND !empty($_POST['type']))
-							{
-								$user = htmlspecialchars($_SESSION['user']);
-								$commentaire = htmlspecialchars($_POST['commentaire']);
-								$type = htmlspecialchars($_POST['type']);
-
-								$reqUser = $bdd->prepare("SELECT * FROM commentaires WHERE comUser = ?");
-								$reqUser->execute(array($user));
-								$userExist = $reqUser->rowCount();
-								if($userExist == 5)
-								{
-									$c_erreur = "Vous avez atteint votre cota de commentaire !";
-								} else {
-									$ins = $bdd->prepare('INSERT INTO commentaires (comUser, comTexte, comType) VALUES (?, ?, ?)');
-									$ins->execute(array($user, $commentaire, $type));
-									$c_message = "Votre commentaire a bien été posté !";
-								}
-							} else {
-								$c_erreur = "Tous les champs doivent être complétés";
-							}
-						}
-
-						$commentaire = $bdd->prepare('SELECT * FROM commentaires ORDER BY comId desc');
-						$commentaire->execute();
-						?>
-						<section style="background-color: #333856!important;" id="three">
-							<div class="inner">
-								<header class="major">
-									<h2>Espace commentaire</h2>
-								</header>
-								<h3>Règlement</h3>
-								<p>- Écrire dans un français correct - Respecter les autres - Pas de pubs et de spams - 5 Commentaires maximum</p>
-								<?php
-								if(isset($_SESSION['user']))
-								{
-								?>
-								<form action="#commentaire" id="commentaire" method="post">
-									<label for="type">Quel Sujet</label>
-									<select name="type">
-										<option value="Général" selected>Général</option>
-										<?php
-										$reqSujet = $bdd->prepare("SELECT * FROM portfolio");
-										$reqSujet->execute();
-										while($curSujet = $reqSujet->fetch())
-										{
-											echo "<option value='".$curSujet['portNom']."'>".$curSujet['portNom']."</option>";
-										}
-										?>
-									</select><br>
-									<label for="commentaire">Votre commentaire</label>
-									<textarea name="commentaire"></textarea><br>
-									<input type="submit" name="submitCommentaire" value="Poster">
-								</form>
-							<?php
-							}
-							if(isset($c_message))
-							{
-								?>
-								<div class="alert alert-success" role="alert">
-									<?php echo $c_message;?>
-								</div>
-								<?php
-							}
-							if(isset($c_erreur))
-							{
-								?>
-								<div class="alert alert-danger" role="alert">
-									<?php echo $c_erreur;?>
-								</div>
-								<?php
-							}
-							?>
-							<br>
-							<?php
-							while($c=$commentaire->fetch())
-							{
-								?>
-								<b><?= $c['comUser'] ?></b><br>
-								Sujet : <?= $c['comType'] ?><br>
-								<?= $c['comTexte'] ?><br><hr>
-								<?php
-							}
-							?>
-						</div>
-					</section>
-
 						<!-- Three -->
             <section id="four">
               <div class="inner">
@@ -297,10 +317,10 @@ include 'include/connectBDD.php';
 					</div>
 
 				<!-- Contact -->
-					<?php include 'include/contact.php'; ?>
+					<?php include 'assets/include/contact.php'; ?>
 
 				<!-- Footer -->
-					<?php include 'include/footer.html'; ?>
+					<?php include 'assets/include/footer.html'; ?>
 
 			</div>
 
@@ -312,6 +332,7 @@ include 'include/connectBDD.php';
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="https://kit.fontawesome.com/3ba462b0e4.js" crossorigin="anonymous"></script>
 
 	</body>
 </html>

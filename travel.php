@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <?php
-include 'include/connectBDD.php';
+include 'assets/include/connectBDD.php';
 
 //if(isset($_GET['id']) AND $_GET['id'] > 0)
 if(isset($_SESSION['id']))

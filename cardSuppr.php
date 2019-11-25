@@ -1,6 +1,6 @@
 <?php
 // On se connecte à la base de donnée
-include 'include/connectBDD.php';
+include 'assets/include/connectBDD.php';
 // On vérifi si l'administrateur est connecté
 if(isset($_SESSION['user']) AND $_SESSION['user'] == "admin")
 {

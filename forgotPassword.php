@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<?php include 'include/connectBDD.php'; ?>
+<?php include 'assets/include/connectBDD.php'; ?>
 <!--
 	Site internet Créé par AUTHEMAN Victor
 -->
@@ -31,7 +31,7 @@
 					</header>
 
 				<!-- Menu -->
-					<?php include 'include/nav.php'; ?>
+					<?php include 'assets/assets/include/nav.php'; ?>
 
 				<!-- Main -->
 					<div id="main" class="alt">
@@ -93,7 +93,7 @@
                         if($mailSaisie == $mailVerif)
                         {
                           $_SESSION['sendMsg'] = "Un mail vous à été envoyé";
-                          include 'include/sendMail.php';
+                          include 'assets/assets/include/sendMail.php';
                         }
                       }
                     } else {

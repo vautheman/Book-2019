@@ -1,5 +1,5 @@
 <?php
-include 'include/connectBDD.php';
+include 'assets/include/connectBDD.php';
 
 if(isset($_GET['user'], $_GET['key']) AND !empty($_GET['user']) AND !empty($_GET['key']))
 {
@@ -58,7 +58,7 @@ if(isset($_GET['user'], $_GET['key']) AND !empty($_GET['user']) AND !empty($_GET
 					</header>
 
 				<!-- Menu -->
-					<?php include 'include/nav.php'; ?>
+					<?php include 'assets/include/nav.php'; ?>
 
 				<!-- Main -->
 					<div id="main" class="alt">
@@ -88,7 +88,7 @@ if(isset($_GET['user'], $_GET['key']) AND !empty($_GET['user']) AND !empty($_GET
 					</div>
 
 				<!-- Footer -->
-					<?php include 'include/footer.html'; ?>
+					<?php include 'assets/include/footer.html'; ?>
 
 			</div>
 

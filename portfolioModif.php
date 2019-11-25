@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <?php
 // On se connecte à la base donnée
-include 'include/connectBDD.php';
+include 'assets/include/connectBDD.php';
 // On récupère l'identifiant choisi
 if(isset($_GET['portId']) AND !empty($_GET['portId']) AND $_GET['portId'] > 0)
 {
@@ -55,7 +55,7 @@ if(isset($_GET['portId']) AND !empty($_GET['portId']) AND $_GET['portId'] > 0)
 					</header>
 
 				<!-- Menu -->
-					<?php include 'include/nav.php'; ?>
+					<?php include 'assets/include/nav.php'; ?>
 
 				<!-- Main -->
 					<div id="main" class="alt">
@@ -126,10 +126,10 @@ if(isset($_GET['portId']) AND !empty($_GET['portId']) AND $_GET['portId'] > 0)
             ?>
 
 				<!-- Contact -->
-					<?php //include 'include/contact.php'; ?>
+					<?php //include 'assets/include/contact.php'; ?>
 
 				<!-- Footer -->
-					<?php //include 'include/footer.html'; ?>
+					<?php //include 'assets/include/footer.html'; ?>
 
 			</div>
       <?php

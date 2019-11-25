@@ -2,22 +2,33 @@
 #define ADMINISTRATION_H
 
 #include <QMainWindow>
-#include <QtSql>
 
 namespace Ui {
-class administration;
+class Administration;
 }
 
-class administration : public QMainWindow
+class Administration : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit administration(QWidget *parent = nullptr);
-    ~administration();
+    explicit Administration(QWidget *parent = nullptr);
+    ~Administration();
+    // connexion database
+
+public slots:
+    void remplirTableWidgetPortfolioItem();
+
+
+private slots:
+    void on_toolButtonSelectBdd_clicked();
+    void remplirTableWidgetRessourcesItem();
+    void on_pushButtonAjoutPortfolioItem_clicked();
+
+    void on_tableWidgetPortfolioItems_cellClicked(int row, int column);
 
 private:
-    Ui::administration *ui;
+    Ui::Administration *ui;
 };
 
 #endif // ADMINISTRATION_H

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <?php
 // On se connecte à la base donnée
-include 'include/connectBDD.php';
+include 'assets/include/connectBDD.php';
 // On vérifie si la session
 if(isset($_SESSION['sendMsg']) AND isset($_GET['id']) AND isset($_GET['mail']) AND !empty($_GET['id']) AND !empty($_GET['mail']))
 {
@@ -41,7 +41,7 @@ if(isset($_SESSION['sendMsg']) AND isset($_GET['id']) AND isset($_GET['mail']) A
 					</header>
 
 				<!-- Menu -->
-					<?php include 'include/nav.php'; ?>
+					<?php include 'assets/include/nav.php'; ?>
 
 				<!-- Main -->
 					<div id="main" class="alt">
